@@ -19,20 +19,12 @@ type Block = {
     id: string
 }
 
-type BlockElemSlide = Block & {
+type TextBlock = Block & {
     xCoord: number,
-    yCoord: number
-}
-
-type TextBlock = BlockElemSlide & {
+    yCoord: number,
     type: 'text',
     chars: Array<Char>,
     alignment: Alignment
-}
-
-type ImageBlock = BlockElemSlide & {
-    type: 'image',
-    data: string,
 }
 
 type GraphicObject = Block & {
@@ -56,4 +48,76 @@ type Rectangle = GraphicObject & {
     yCOord: number,
     width: number,
     height: number,
+}
+
+type Triangle = GraphicObject & {
+    xFirstCoord: number,
+    yFitrstCoord: number,
+    xSecondCoord: number,
+    ySecondCoord: number,
+    xThirdCoord: number,
+    yThirdCoord: number,
+}
+
+type ImageAndVideoBlock = Block & {
+    xCoord: number,
+    yCoord: number,
+    type: 'image',
+    urlStr: string,
+}
+
+type Audio = Block & {
+    xCoord: number,
+    yCoord: number,
+    urlStr: string,
+}
+
+type BackColor = {
+    color: string
+}
+
+type BackImage = {
+    urlStr: string,
+}
+
+type Background = {
+    type: BackColor | BackImage
+}
+
+export enum TypeTransition {
+    Default,
+    Fading,
+    Scrolling,
+}
+
+export enum TypeAnimation {
+    Moving,
+    Appearing,
+}
+
+type Animation = Block & {
+    animation: TypeAnimation
+}
+
+type Slide = Background & {
+    elements: Array<Block>,
+    chosenElements: Array<Block>,
+    transition: TypeTransition,
+    animations: Array<Animation>,
+}
+
+type Presentation = {
+    slides: Array<Slide>,
+}
+
+export enum TypeViewingMode {
+    Editor,
+    SlideShow,
+}
+
+type MainEditor = {
+    presentation: Presentation,
+    chosenSlides: Array<Slide>,
+    history: Array<Presentation>
+    viewingMode: TypeViewingMode,
 }
