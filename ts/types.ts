@@ -44,8 +44,8 @@ type GraphicObject = Block & {
     angelRotate: number,
 }
 
-type Elipce = GraphicObject & { //как это рисовать то? Радиуса не достаточно
-    radius: number {},
+type Ellipse = GraphicObject & { //как это рисовать то? Радиуса не достаточно
+    radius: number,
     Centre: Point,
 }
 
@@ -98,9 +98,9 @@ enum TypeAnimation {
     Appearing,
 }
 
-type Animation {
-    block: Block
-    animation: TypeAnimation
+type Animation = {
+    block: Block,
+    animation: TypeAnimation,
 }
 
 type Slide = {
@@ -126,5 +126,5 @@ type MainEditor = {
 }
 
 export{
-
+    TextBlock, Ellipse, 
 }

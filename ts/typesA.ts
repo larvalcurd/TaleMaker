@@ -1,9 +1,8 @@
+import { TextBlock, Ellipse, Rectangle, GraphicObject } from './types'
 const textBlock: TextBlock = {
     id: 'id1', 
-    x1: 0,
-    y1: 0,
-    x2: 1,
-    y2: 1,
+    point1: {x: 0, y: 0},
+    point2: {x: 10, y: 10},
     type: 'text',
     chars: [{ 
         value: 'q',
@@ -15,11 +14,12 @@ const textBlock: TextBlock = {
         opacity: 100,
 
     }],
-    alignment: Alignment.Without,
+    chosenChars:[],
+    alignment: 'Without',
     angelRotate: 30,
 }
 
-const circle: Circle  =  {
+const circle: Ellipse  =  {
     id: 'id2',
     type: 'graphics',
     color: 'red',
@@ -27,20 +27,21 @@ const circle: Circle  =  {
     colorBorder: 'grey',
     text: {
         id: 'id2', 
-        x1: 0,
-        y1: 0,
-        x2: 1,
-        y2: 1,
+        point1: {x: 0, y: 0},
+        point2: {x: 1, y: 1},
         type: 'text',
         chars: [],
-        alignment: Alignment.Without,
+        chosenChars: [],
+        alignment: 'Without',
         angelRotate: 0,
     },
     opacity: 100,
     angelRotate: 0,
     radius: 5,
-    xCoordCentre: 1,
-    yCoordCentre: 1,
+    point1: {x: 10, y: 10},
+    point2: {x: 0, y: 0},
+    Centre: {x: 7, y: 7},
+
 }
 
 const rectangle: Rectangle = {
@@ -51,42 +52,17 @@ const rectangle: Rectangle = {
     colorBorder: 'grey',
     text: {
         id: 'id2', 
-        xCoord: 1,
-        yCoord: 1,
         type: 'text',
+        point1: {x: 20, y: 10},
+        point2: {x: 30, y: 0},
         chars: [],
-        alignment: Alignment.Without,
+        chosenChars: [],
+        alignment: 'Without',
         angelRotate: 0,
     },
     opacity: 100,
     angelRotate: 0,
-    xCoord: 2,
-    yCOord: 2,
-    width: 2,
-    height: 3,
+    point1: {x: 20, y: 10},
+    point2: {x: 30, y: 0},
 }
 
-type Triangle = GraphicObject & {
-    id: 'id3',
-    type: 'graphics',
-    color: 'green',
-    borderThickness: 2,
-    colorBorder: 'grey',
-    text: {
-        id: 'id2', 
-        xCoord: 1,
-        yCoord: 1,
-        type: 'text',
-        chars: [],
-        alignment: Alignment.Without,
-        angelRotate: 0,
-    },
-    opacity: 100,
-    angelRotate: 0,
-    xFirstCoord: number,
-    yFitrstCoord: number,
-    xSecondCoord: number,
-    ySecondCoord: number,
-    xThirdCoord: number,
-    yThirdCoord: number,
-}
