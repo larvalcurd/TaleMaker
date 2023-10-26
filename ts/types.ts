@@ -15,15 +15,6 @@ enum Alignment {
     Right
 }
 
-<<<<<<< HEAD
-export type Block = {
-    id: string
-}
-
-export type TextBlock = Block & {
-    xCoord: number,
-    yCoord: number,
-=======
 type Point = {
     x: number,
     y: number,
@@ -36,7 +27,6 @@ type Block = {
 }
 
 type TextBlock = Block & {
->>>>>>> types
     type: 'text',
     chars: Array<Char>,
     chosenChars: Array<Char>,
@@ -54,36 +44,11 @@ export type GraphicObject = Block & {
     angelRotate: number,
 }
 
-<<<<<<< HEAD
-export type Circle = GraphicObject & {
-=======
 type Ellipse = GraphicObject & { //как это рисовать то? Радиуса не достаточно
->>>>>>> types
     radius: number,
     Centre: Point,
 }
 
-<<<<<<< HEAD
-export type Rectangle = GraphicObject & {
-    xCoord: number,
-    yCOord: number,
-    width: number,
-    height: number,
-}
-
-export type Triangle = GraphicObject & {
-    xFirstCoord: number,
-    yFitrstCoord: number,
-    xSecondCoord: number,
-    ySecondCoord: number,
-    xThirdCoord: number,
-    yThirdCoord: number,
-}
-
-export type ImageAndVideoBlock = Block & {
-    xCoord: number,
-    yCoord: number,
-=======
 type Rectangle = GraphicObject & {}
 
 type EquilTriangle = GraphicObject & {
@@ -99,24 +64,10 @@ type RightTriangle = GraphicObject & {
 }
 
 type ImageAndVideoBlock = Block & {
->>>>>>> types
     type: 'image',
     urlStr: string,
 }
 
-<<<<<<< HEAD
-export type Audio = Block & {
-    xCoord: number,
-    yCoord: number,
-    urlStr: string,
-}
-
-export type BackColor = {
-    color: string
-}
-
-export type BackImage = {
-=======
 type Audio = Block & {
     type: 'audio',
     urlStr: string,
@@ -129,7 +80,6 @@ type BackColor = {
 
 type BackImage = {
     type: 'backImage'
->>>>>>> types
     urlStr: string,
 }
 
@@ -153,25 +103,17 @@ type Animation = {
     animation: TypeAnimation,
 }
 
-<<<<<<< HEAD
-export type Slide = Background & {
-=======
 type Slide = {
     id: string,
     background: Background,
->>>>>>> types
     elements: Array<Block>,
     chosenElements: Array<Block>,
     transition: TransionType,
     animations: Array<string>,
 }
 
-<<<<<<< HEAD
-export type Presentation = {
-=======
 type Presentation = {
     name: string,
->>>>>>> types
     slides: Array<Slide>,
     
 }
@@ -184,5 +126,5 @@ export type MainEditor = {
 }
 
 export{
-    TextBlock, Ellipse, 
+    TextBlock, Ellipse, Rectangle
 }
