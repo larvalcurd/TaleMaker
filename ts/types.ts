@@ -1,4 +1,4 @@
-type Char = {
+export type Char = {
     value: string,
     fontSize: number,
     fontFamily: string,
@@ -15,11 +15,11 @@ export enum Alignment {
     Right
 }
 
-type Block = {
+export type Block = {
     id: string
 }
 
-type TextBlock = Block & {
+export type TextBlock = Block & {
     xCoord: number,
     yCoord: number,
     type: 'text',
@@ -27,7 +27,7 @@ type TextBlock = Block & {
     alignment: Alignment
 }
 
-type GraphicObject = Block & {
+export type GraphicObject = Block & {
     type: 'graphics',
     color: string,
     borderThickness: number,
@@ -37,20 +37,20 @@ type GraphicObject = Block & {
     angelRotate: number,
 }
 
-type Circle = GraphicObject & {
+export type Circle = GraphicObject & {
     radius: number,
     xCoordCentre: number,
     yCoordCentre: number
 }
 
-type Rectangle = GraphicObject & {
+export type Rectangle = GraphicObject & {
     xCoord: number,
     yCOord: number,
     width: number,
     height: number,
 }
 
-type Triangle = GraphicObject & {
+export type Triangle = GraphicObject & {
     xFirstCoord: number,
     yFitrstCoord: number,
     xSecondCoord: number,
@@ -59,28 +59,28 @@ type Triangle = GraphicObject & {
     yThirdCoord: number,
 }
 
-type ImageAndVideoBlock = Block & {
+export type ImageAndVideoBlock = Block & {
     xCoord: number,
     yCoord: number,
     type: 'image',
     urlStr: string,
 }
 
-type Audio = Block & {
+export type Audio = Block & {
     xCoord: number,
     yCoord: number,
     urlStr: string,
 }
 
-type BackColor = {
+export type BackColor = {
     color: string
 }
 
-type BackImage = {
+export type BackImage = {
     urlStr: string,
 }
 
-type Background = {
+export type Background = {
     type: BackColor | BackImage
 }
 
@@ -99,14 +99,14 @@ type Animation = Block & {
     animation: TypeAnimation
 }
 
-type Slide = Background & {
+export type Slide = Background & {
     elements: Array<Block>,
     chosenElements: Array<Block>,
     transition: TypeTransition,
     animations: Array<Animation>,
 }
 
-type Presentation = {
+export type Presentation = {
     slides: Array<Slide>,
 }
 
@@ -115,7 +115,7 @@ export enum TypeViewingMode {
     SlideShow,
 }
 
-type MainEditor = {
+export type MainEditor = {
     presentation: Presentation,
     chosenSlides: Array<Slide>,
     history: Array<Presentation>
