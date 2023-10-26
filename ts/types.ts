@@ -8,23 +8,30 @@ type Char = {
     opacity: number,
 }
 
-export enum Alignment {
-    WithOut,
+enum Alignment {
+    Without,
     Left,
     Centre,
     Right
 }
 
+type Point = {
+    x: number,
+    y: number,
+}
+
 type Block = {
-    id: string
+    id: string,
+    point1: Point,
+    point2: Point,
 }
 
 type TextBlock = Block & {
-    xCoord: number,
-    yCoord: number,
     type: 'text',
     chars: Array<Char>,
-    alignment: Alignment
+    chosenChars: Array<Char>,
+    alignment: 'Without' | 'Left' | 'Centre' | 'Right',
+    angelRotate: number,
 }
 
 type GraphicObject = Block & {
@@ -37,46 +44,42 @@ type GraphicObject = Block & {
     angelRotate: number,
 }
 
-type Circle = GraphicObject & {
-    radius: number,
-    xCoordCentre: number,
-    yCoordCentre: number
+type Elipce = GraphicObject & { //как это рисовать то? Радиуса не достаточно
+    radius: number {},
+    Centre: Point,
 }
 
-type Rectangle = GraphicObject & {
-    xCoord: number,
-    yCOord: number,
-    width: number,
-    height: number,
+type Rectangle = GraphicObject & {}
+
+type EquilTriangle = GraphicObject & {
+    point1: Point,
+    point2: Point,
+    point3: Point,
 }
 
-type Triangle = GraphicObject & {
-    xFirstCoord: number,
-    yFitrstCoord: number,
-    xSecondCoord: number,
-    ySecondCoord: number,
-    xThirdCoord: number,
-    yThirdCoord: number,
+type RightTriangle = GraphicObject & {
+    point1: Point,
+    point2: Point,
+    point3: Point,
 }
 
 type ImageAndVideoBlock = Block & {
-    xCoord: number,
-    yCoord: number,
     type: 'image',
     urlStr: string,
 }
 
 type Audio = Block & {
-    xCoord: number,
-    yCoord: number,
+    type: 'audio',
     urlStr: string,
 }
 
 type BackColor = {
-    color: string
+    type: 'backColor',
+    color: string,
 }
 
 type BackImage = {
+    type: 'backImage'
     urlStr: string,
 }
 
@@ -84,40 +87,44 @@ type Background = {
     type: BackColor | BackImage
 }
 
-export enum TypeTransition {
+enum TransionType {
     Default,
     Fading,
     Scrolling,
 }
 
-export enum TypeAnimation {
+enum TypeAnimation {
     Moving,
     Appearing,
 }
 
-type Animation = Block & {
+type Animation {
+    block: Block
     animation: TypeAnimation
 }
 
-type Slide = Background & {
+type Slide = {
+    id: string,
+    background: Background,
     elements: Array<Block>,
     chosenElements: Array<Block>,
-    transition: TypeTransition,
-    animations: Array<Animation>,
+    transition: TransionType,
+    animations: Array<string>,
 }
 
 type Presentation = {
+    name: string,
     slides: Array<Slide>,
-}
-
-export enum TypeViewingMode {
-    Editor,
-    SlideShow,
+    
 }
 
 type MainEditor = {
     presentation: Presentation,
-    chosenSlides: Array<Slide>,
+    chosenSlideIds: Array<string>,
     history: Array<Presentation>
-    viewingMode: TypeViewingMode,
+    viewingMode: 'editor' | 'slideShow',
+}
+
+export{
+
 }
