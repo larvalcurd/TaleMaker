@@ -8,13 +8,14 @@ export type Char = {
     opacity: number,
 }
 
-export enum Alignment {
-    WithOut,
+enum Alignment {
+    Without,
     Left,
     Centre,
     Right
 }
 
+<<<<<<< HEAD
 export type Block = {
     id: string
 }
@@ -22,9 +23,25 @@ export type Block = {
 export type TextBlock = Block & {
     xCoord: number,
     yCoord: number,
+=======
+type Point = {
+    x: number,
+    y: number,
+}
+
+type Block = {
+    id: string,
+    point1: Point,
+    point2: Point,
+}
+
+type TextBlock = Block & {
+>>>>>>> types
     type: 'text',
     chars: Array<Char>,
-    alignment: Alignment
+    chosenChars: Array<Char>,
+    alignment: 'Without' | 'Left' | 'Centre' | 'Right',
+    angelRotate: number,
 }
 
 export type GraphicObject = Block & {
@@ -37,12 +54,16 @@ export type GraphicObject = Block & {
     angelRotate: number,
 }
 
+<<<<<<< HEAD
 export type Circle = GraphicObject & {
+=======
+type Ellipse = GraphicObject & { //как это рисовать то? Радиуса не достаточно
+>>>>>>> types
     radius: number,
-    xCoordCentre: number,
-    yCoordCentre: number
+    Centre: Point,
 }
 
+<<<<<<< HEAD
 export type Rectangle = GraphicObject & {
     xCoord: number,
     yCOord: number,
@@ -62,10 +83,28 @@ export type Triangle = GraphicObject & {
 export type ImageAndVideoBlock = Block & {
     xCoord: number,
     yCoord: number,
+=======
+type Rectangle = GraphicObject & {}
+
+type EquilTriangle = GraphicObject & {
+    point1: Point,
+    point2: Point,
+    point3: Point,
+}
+
+type RightTriangle = GraphicObject & {
+    point1: Point,
+    point2: Point,
+    point3: Point,
+}
+
+type ImageAndVideoBlock = Block & {
+>>>>>>> types
     type: 'image',
     urlStr: string,
 }
 
+<<<<<<< HEAD
 export type Audio = Block & {
     xCoord: number,
     yCoord: number,
@@ -77,6 +116,20 @@ export type BackColor = {
 }
 
 export type BackImage = {
+=======
+type Audio = Block & {
+    type: 'audio',
+    urlStr: string,
+}
+
+type BackColor = {
+    type: 'backColor',
+    color: string,
+}
+
+type BackImage = {
+    type: 'backImage'
+>>>>>>> types
     urlStr: string,
 }
 
@@ -84,40 +137,52 @@ export type Background = {
     type: BackColor | BackImage
 }
 
-export enum TypeTransition {
+enum TransionType {
     Default,
     Fading,
     Scrolling,
 }
 
-export enum TypeAnimation {
+enum TypeAnimation {
     Moving,
     Appearing,
 }
 
-type Animation = Block & {
-    animation: TypeAnimation
+type Animation = {
+    block: Block,
+    animation: TypeAnimation,
 }
 
+<<<<<<< HEAD
 export type Slide = Background & {
+=======
+type Slide = {
+    id: string,
+    background: Background,
+>>>>>>> types
     elements: Array<Block>,
     chosenElements: Array<Block>,
-    transition: TypeTransition,
-    animations: Array<Animation>,
+    transition: TransionType,
+    animations: Array<string>,
 }
 
+<<<<<<< HEAD
 export type Presentation = {
+=======
+type Presentation = {
+    name: string,
+>>>>>>> types
     slides: Array<Slide>,
-}
-
-export enum TypeViewingMode {
-    Editor,
-    SlideShow,
+    
 }
 
 export type MainEditor = {
     presentation: Presentation,
-    chosenSlides: Array<Slide>,
+    chosenSlideIds: Array<string>,
     history: Array<Presentation>
-    viewingMode: TypeViewingMode,
+    viewingMode: 'editor' | 'slideShow',
+}
+
+export{
+    TextBlock, Ellipse, 
 }
