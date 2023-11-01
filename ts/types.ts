@@ -1,130 +1,128 @@
 export type Char = {
-    value: string,
-    fontSize: number,
-    fontFamily: string,
-    color: string,
-    bold: boolean,
-    underlined: boolean,
-    opacity: number,
-}
+	value: string;
+	fontSize: number;
+	fontFamily: string;
+	color: string;
+	bold: boolean;
+	underlined: boolean;
+	opacity: number;
+};
 
 enum Alignment {
-    Without,
-    Left,
-    Centre,
-    Right
+	Without,
+	Left,
+	Centre,
+	Right,
 }
 
 type Point = {
-    x: number,
-    y: number,
-}
+	x: number;
+	y: number;
+};
 
 type Block = {
-    id: string,
-    point1: Point,
-    point2: Point,
-}
+	id: string;
+	point1: Point;
+	point2: Point;
+};
 
 type TextBlock = Block & {
-    type: 'text',
-    chars: Array<Char>,
-    chosenChars: Array<Char>,
-    alignment: 'Without' | 'Left' | 'Centre' | 'Right',
-    angelRotate: number,
-}
+	type: "text";
+	chars: Array<Char>;
+	chosenChars: Array<Char>;
+	alignment: "Without" | "Left" | "Centre" | "Right";
+	angelRotate: number;
+};
 
 export type GraphicObject = Block & {
-    type: 'graphics',
-    color: string,
-    borderThickness: number,
-    colorBorder: string,
-    text: TextBlock,
-    opacity: number,
-    angelRotate: number,
-}
+	type: "graphics";
+	color: string;
+	borderThickness: number;
+	colorBorder: string;
+	text: TextBlock;
+	opacity: number;
+	angelRotate: number;
+};
 
-type Ellipse = GraphicObject & { //как это рисовать то? Радиуса не достаточно
-    radius: number,
-    Centre: Point,
-}
+type Ellipse = GraphicObject & {
+	//как это рисовать то? Радиуса не достаточно
+	radius: number;
+	Centre: Point;
+};
 
-type Rectangle = GraphicObject & {}
+type Rectangle = GraphicObject & {};
 
 type EquilTriangle = GraphicObject & {
-    point1: Point,
-    point2: Point,
-    point3: Point,
-}
+	point1: Point;
+	point2: Point;
+	point3: Point;
+};
 
 type RightTriangle = GraphicObject & {
-    point1: Point,
-    point2: Point,
-    point3: Point,
-}
+	point1: Point;
+	point2: Point;
+	point3: Point;
+};
 
 type ImageAndVideoBlock = Block & {
-    type: 'image',
-    urlStr: string,
-}
+	type: "image";
+	urlStr: string;
+};
 
 type Audio = Block & {
-    type: 'audio',
-    urlStr: string,
-}
+	type: "audio";
+	urlStr: string;
+};
 
 type BackColor = {
-    type: 'backColor',
-    color: string,
-}
+	type: "backColor";
+	color: string;
+};
 
 type BackImage = {
-    type: 'backImage'
-    urlStr: string,
-}
+	type: "backImage";
+	urlStr: string;
+};
 
 export type Background = {
-    type: BackColor | BackImage
-}
+	type: BackColor | BackImage;
+};
 
 enum TransionType {
-    Default,
-    Fading,
-    Scrolling,
+	Default,
+	Fading,
+	Scrolling,
 }
 
 enum TypeAnimation {
-    Moving,
-    Appearing,
+	Moving,
+	Appearing,
 }
 
 type Animation = {
-    block: Block,
-    animation: TypeAnimation,
-}
+	block: Block;
+	animation: TypeAnimation;
+};
 
 type Slide = {
-    id: string,
-    background: Background,
-    elements: Array<Block>,
-    chosenElements: Array<Block>,
-    transition: TransionType,
-    animations: Array<string>,
-}
+	id: string;
+	background: Background;
+	elements: Array<Block>;
+	chosenElements: Array<Block>;
+	transition: TransionType;
+	animations: Array<string>;
+};
 
 type Presentation = {
-    name: string,
-    slides: Array<Slide>,
-    
-}
+	name: string;
+	slides: Array<Slide>;
+};
 
 export type MainEditor = {
-    presentation: Presentation,
-    chosenSlideIds: Array<string>,
-    history: Array<Presentation>
-    viewingMode: 'editor' | 'slideShow',
-}
+	presentation: Presentation;
+	chosenSlideIds: Array<string>;
+	history: Array<Presentation>;
+	viewingMode: "editor" | "slideShow";
+};
 
-export{
-    TextBlock, Ellipse, Rectangle
-}
+export { TextBlock, Ellipse, Rectangle };
