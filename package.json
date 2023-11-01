@@ -1,6 +1,9 @@
 {
 	"scripts": {
-		"linters": "npx stylelint **/*.css --fix || npx eslint . --fix || npx prettier . --write"
+		"linters": "npx stylelint **/*.css --fix || npx eslint . --fix || npx prettier . --write",
+		"start": "react-scripts start",
+		"build": "react-scripts build",
+		"test": "react-scripts test"
 	},
 	"devDependencies": {
 		"@typescript-eslint/eslint-plugin": "^6.7.4",

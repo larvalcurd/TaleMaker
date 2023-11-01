@@ -1,4 +1,4 @@
-export type Char = {
+type Char = {
 	value: string;
 	fontSize: number;
 	fontFamily: string;
@@ -34,8 +34,7 @@ type TextBlock = Block & {
 	angelRotate: number;
 };
 
-export type GraphicObject = Block & {
-	type: "graphics";
+type GraphicObject = Block & {
 	color: string;
 	borderThickness: number;
 	colorBorder: string;
@@ -45,27 +44,36 @@ export type GraphicObject = Block & {
 };
 
 type Ellipse = GraphicObject & {
-	//как это рисовать то? Радиуса не достаточно
+	type: "ellipse"; //как это рисовать то? Радиуса не достаточно
 	radius: number;
 	Centre: Point;
 };
 
-type Rectangle = GraphicObject & {};
+type Rectangle = GraphicObject & {
+	type: "rectangle";
+};
 
 type EquilTriangle = GraphicObject & {
-	point1: Point;
-	point2: Point;
-	point3: Point;
+	type: "equilTriangle";
+	trianglePoint1: Point;
+	trianglePoint2: Point;
+	trianglePoint3: Point;
 };
 
 type RightTriangle = GraphicObject & {
-	point1: Point;
-	point2: Point;
-	point3: Point;
+	type: "rightTriangle";
+	trianglePoint1: Point;
+	trianglePoint2: Point;
+	trianglePoint3: Point;
 };
 
-type ImageAndVideoBlock = Block & {
+type ImageBlock = Block & {
 	type: "image";
+	urlStr: string;
+};
+
+type VideoBlock = Block & {
+	type: "video";
 	urlStr: string;
 };
 
@@ -84,7 +92,7 @@ type BackImage = {
 	urlStr: string;
 };
 
-export type Background = {
+type Background = {
 	type: BackColor | BackImage;
 };
 
@@ -118,11 +126,14 @@ type Presentation = {
 	slides: Array<Slide>;
 };
 
-export type MainEditor = {
+type MainEditor = {
 	presentation: Presentation;
 	chosenSlideIds: Array<string>;
 	history: Array<Presentation>;
 	viewingMode: "editor" | "slideShow";
 };
 
-export { TextBlock, Ellipse, Rectangle };
+export {
+	TextBlock, Ellipse, Rectangle, EquilTriangle, RightTriangle, ImageBlock,
+	BackColor, Slide, Presentation, MainEditor
+};
