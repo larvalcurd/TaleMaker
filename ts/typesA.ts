@@ -1,6 +1,6 @@
 import {
-	TextBlock, Ellipse, Rectangle, EquilTriangle, RightTriangle, ImageBlock,
-	BackColor, Slide, Presentation, MainEditor
+	TextBlock, Ellipse, Rectangle, Triangle, Image,
+	BackColor, Slide, Presentation, MainEditor, Background
 } from "./types";
 
 const textBlock: TextBlock = {
@@ -8,19 +8,9 @@ const textBlock: TextBlock = {
 	point1: { x: 0, y: 0 },
 	point2: { x: 10, y: 10 },
 	type: "text",
-	chars: [
-		{
-			value: "q",
-			fontSize: 14,
-			fontFamily: "Comic Sans MS",
-			color: "#000000",
-			bold: false,
-			underlined: false,
-			opacity: 100,
-		},
-	],
-	chosenChars: [],
-	alignment: "Without",
+	chars: [],
+	chosenCharIds: [],
+	alignment: 0,
 	angelRotate: 30,
 };
 
@@ -37,15 +27,15 @@ const circle: Ellipse = {
 		point2: { x: 1, y: 1 },
 		type: "text",
 		chars: [],
-		chosenChars: [],
-		alignment: "Without",
+		chosenCharIds: [],
+		alignment: 0,
 		angelRotate: 0,
 	},
 	opacity: 100,
 	angelRotate: 0,
 	type: "ellipse",
 	radius: 5,
-	Centre: { x: 7, y: 7 },
+	centre: { x: 7, y: 7 },
 };
 
 const rectangle: Rectangle = {
@@ -59,8 +49,8 @@ const rectangle: Rectangle = {
 		point1: { x: 20, y: 10 },
 		point2: { x: 30, y: 0 },
 		chars: [],
-		chosenChars: [],
-		alignment: "Without",
+		chosenCharIds: [],
+		alignment: 0,
 		angelRotate: 0,
 	},
 	opacity: 100,
@@ -70,10 +60,11 @@ const rectangle: Rectangle = {
 	type: "rectangle",
 };
 
-const equilTriangle: EquilTriangle = {
+const equilTriangle: Triangle = {
 	id: "id4",
 	point1: { x: 0, y: 5 },
 	point2: { x: 5, y: 0 },
+	angelRotate: 0,
 	color: "",
 	borderThickness: 1,
 	colorBorder: "#000000",
@@ -83,22 +74,22 @@ const equilTriangle: EquilTriangle = {
 		point1: { x: 1, y: 2 },
 		point2: { x: 4, y: 1 },
 		chars: [],
-		chosenChars: [],
-		alignment: "Without",
+		chosenCharIds: [],
+		alignment: 0,
 		angelRotate: 0,
 	},
 	opacity: 100,
-	angelRotate: 0,
-	type: "equilTriangle",
+	type: "Triangle",
 	trianglePoint1: { x: 0, y: 0 },
 	trianglePoint2: { x: 5, y: 0 },
 	trianglePoint3: { x: 2.5, y: 4.33 },
 }
 
-const rightTriangle: RightTriangle = {
+const rightTriangle: Triangle = {
 	id: "id5",
 	point1: { x: 4, y: 8 },
 	point2: { x: 6, y: 6 },
+	angelRotate: 0,
 	color: "#F3FF00",
 	borderThickness: 3.5,
 	colorBorder: "#F3FF00",
@@ -108,22 +99,22 @@ const rightTriangle: RightTriangle = {
 		point1: { x: 4, y: 7 },
 		point2: { x: 5, y: 6 },
 		chars: [],
-		chosenChars: [],
-		alignment: "Without",
+		chosenCharIds: [],
+		alignment: 0,
 		angelRotate: 0,
 	},
 	opacity: 100,
-	angelRotate: 0,
-	type: "rightTriangle",
+	type: "Triangle",
 	trianglePoint1: { x: 4, y: 6 },
 	trianglePoint2: { x: 4, y: 8 },
 	trianglePoint3: { x: 6, y: 6 },
 }
 
-const imageBlock: ImageBlock = {
+const imageBlock: Image = {
 	id: "id6",
 	point1: { x: 100, y: 100 },
 	point2: { x: 150, y: 125 },
+	angelRotate: 0,
 	type: "image",
 	urlStr: "https://m.media-amazon.com/images/I/31enPn7dN+L.jpg",
 };
@@ -133,23 +124,30 @@ const backgroundColor: BackColor = {
 	color: "#699DF9",
 }
 
+const background: Background = {
+	type: backgroundColor,
+}
+
 const slide1: Slide = {
 	id: "slide1",
-	background: backgroundColor, // надо уточнить, я хз как
-	elements: [textBlock, circle, rectangle],
+	background: background, // вот так
+	elements: [],
 	chosenElements: [],
 	transition: 0,
 	animations: [],
 }
 
 const presentation: Presentation = {
+	width: 500,
+	height: 600,
+	versionId: "0",
 	name: "React",
-	slides: [slide1],
+	slides: [],
+	chosenSlideIds: [],
 }
 
 const user: MainEditor = {
 	presentation: presentation,
-	chosenSlideIds: [],
 	history: [],
 	viewingMode: "editor",
 }
