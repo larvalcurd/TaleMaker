@@ -1,4 +1,5 @@
 type Char = {
+	id: string;
 	value: string;
 	fontSize: number;
 	fontFamily: string;
@@ -24,14 +25,14 @@ type Block = {
 	id: string;
 	point1: Point;
 	point2: Point;
+	angelRotate: number;
 };
 
 type TextBlock = Block & {
 	type: "text";
 	chars: Array<Char>;
-	chosenChars: Array<Char>;
-	alignment: "Without" | "Left" | "Centre" | "Right";
-	angelRotate: number;
+	chosenCharIds: Array<string>;
+	alignment: Alignment,
 };
 
 type GraphicObject = Block & {
@@ -40,39 +41,31 @@ type GraphicObject = Block & {
 	colorBorder: string;
 	text: TextBlock;
 	opacity: number;
-	angelRotate: number;
 };
 
 type Ellipse = GraphicObject & {
 	type: "ellipse"; //как это рисовать то? Радиуса не достаточно
 	radius: number;
-	Centre: Point;
+	centre: Point;
 };
 
 type Rectangle = GraphicObject & {
 	type: "rectangle";
 };
 
-type EquilTriangle = GraphicObject & {
-	type: "equilTriangle";
+type Triangle = GraphicObject & {
+	type: "Triangle";
 	trianglePoint1: Point;
 	trianglePoint2: Point;
 	trianglePoint3: Point;
 };
 
-type RightTriangle = GraphicObject & {
-	type: "rightTriangle";
-	trianglePoint1: Point;
-	trianglePoint2: Point;
-	trianglePoint3: Point;
-};
-
-type ImageBlock = Block & {
+type Image = Block & {
 	type: "image";
 	urlStr: string;
 };
 
-type VideoBlock = Block & {
+type Video = Block & {
 	type: "video";
 	urlStr: string;
 };
@@ -108,32 +101,37 @@ enum TypeAnimation {
 }
 
 type Animation = {
-	block: Block;
+	id: string;
+	blockId: string;
 	animation: TypeAnimation;
 };
 
 type Slide = {
 	id: string;
 	background: Background;
-	elements: Array<Block>;
-	chosenElements: Array<Block>;
+	elements: Array<Rectangle|Triangle|TextBlock|Ellipse|Image|Video|Audio>;
+	chosenElements: Array<string>;
 	transition: TransionType;
-	animations: Array<string>;
+	animations: Array<Animation>;
 };
 
 type Presentation = {
+	width: number;
+	height: number;
+	versionId: string;
 	name: string;
 	slides: Array<Slide>;
+	chosenSlideIds: Array<string>;
 };
 
 type MainEditor = {
 	presentation: Presentation;
-	chosenSlideIds: Array<string>;
 	history: Array<Presentation>;
 	viewingMode: "editor" | "slideShow";
 };
 
 export {
-	TextBlock, Ellipse, Rectangle, EquilTriangle, RightTriangle, ImageBlock,
-	BackColor, Slide, Presentation, MainEditor
+	TextBlock, Ellipse, Rectangle, Triangle, Image,
+	BackColor, Slide, Presentation, MainEditor, Background, Char, Animation, 
+	TypeAnimation, TransionType,
 };
