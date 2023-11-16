@@ -133,5 +133,5 @@ type MainEditor = {
 export {
 	TextBlock, Ellipse, Rectangle, Triangle, Image,
 	BackColor, Slide, Presentation, MainEditor, Background, Char, Animation, 
-	TypeAnimation, TransionType,
+	TypeAnimation, TransionType, Video, Audio
 };

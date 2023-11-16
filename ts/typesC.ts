@@ -1,5 +1,5 @@
 import {
-	TextBlock, Ellipse, Rectangle, Triangle, Image,
+	TextBlock, Ellipse, Rectangle, Triangle, Image, Video, Audio,
 	BackColor, Slide, Presentation, MainEditor, Background, Char, Animation, 
     TypeAnimation, TransionType
 } from "./types";
@@ -23,6 +23,28 @@ const char2: Char = {
     color: "#000000",
     bold: false,
     underlined: false,
+    opacity: 100,
+}
+
+const char3: Char = {
+    id: "char3",
+    value: "w",
+    fontSize: 20,
+    fontFamily: "Comic Sans MS",
+    color: "#000000",
+    bold: true,
+    underlined: false,
+    opacity: 100,
+}
+
+const char4: Char = {
+    id: "char4",
+    value: "w",
+    fontSize: 20,
+    fontFamily: "Comic Sans MS",
+    color: "#000000",
+    bold: false,
+    underlined: true,
     opacity: 100,
 }
 
@@ -50,8 +72,8 @@ const circle: Ellipse = {
 		point1: { x: 0, y: 0 },
 		point2: { x: 1, y: 1 },
 		type: "text",
-		chars: [char1],
-		chosenCharIds: ["char1"],
+		chars: [char2],
+		chosenCharIds: ["char2"],
 		alignment: 0,
 		angelRotate: 0,
 	},
@@ -95,8 +117,8 @@ const equilTriangle: Triangle = {
 		type: "text",
 		point1: { x: 1, y: 2 },
 		point2: { x: 4, y: 1 },
-		chars: [char2],
-		chosenCharIds: ["char2"],
+		chars: [char3],
+		chosenCharIds: ["char3"],
 		alignment: 0,
 		angelRotate: 0,
 	},
@@ -121,8 +143,8 @@ const rightTriangle: Triangle = {
 		type: "text",
 		point1: { x: 4, y: 7 },
 		point2: { x: 5, y: 6 },
-		chars: [char1],
-		chosenCharIds: ["char1"],
+		chars: [char3, char4],
+		chosenCharIds: ["char3", "char4"],
 		alignment: 0,
 		angelRotate: 0,
 	},
@@ -141,6 +163,25 @@ const imageBlock: Image = {
 	type: "image",
 	urlStr: "https://m.media-amazon.com/images/I/31enPn7dN+L.jpg",
 };
+
+const audioBlock: Audio = {
+    id: "block6",
+	point1: { x: 150, y: 125 },
+	point2: { x: 175, y: 150 },
+	angelRotate: 0,
+	type: "audio",
+	urlStr: "https://freesound.org/people/InspectorJ/sounds/405561/",
+}
+
+const videoBlock: Video = {
+    id: "block7",
+	point1: { x: 200, y: 175 },
+	point2: { x: 225, y: 200 },
+	angelRotate: 0,
+	type: "video",
+	urlStr: "https://clck.ru/3vyXS",
+}
+
 
 const backgroundColor: BackColor = {
 	type: "backColor",
